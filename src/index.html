@@ -3,39 +3,53 @@
   <head>
     <meta charset="utf-8">
     <title>Title</title>
-    <link rel="stylesheet" href="dist/main.css"
+    <link rel="stylesheet" href="dist/main.css">
   </head>
   <body>
     <form class="friend-form">
-         <div class="form-group">
-           <label>Name</label>
-           <input type="text" name="name">
-         </div>
+     <div class="form-group">
+       <label>Name</label>
+       <input type="text" name="name">
+     </div>
 
-         <div class="form-group">
-           <label>
-             <input type="radio" name="gender" value="m">
-             Male
-           </label>
-           <label>
-             <input type="radio" name="gender" value="f">
-             Female
-           </label>
-         </div>
+     <div class="form-group">
+       <label>
+         <input type="radio" name="gender" value="Male">
+         Male
+       </label>
+       <label>
+         <input type="radio" name="gender" value="Female">
+         Female
+       </label>
+     </div>
+
+     <div class="form-group">
+       <label>College</label>
+       <input type="text" name="college">
+     </div>
 
          <button>Add Friend</button>
-       </form>
+    </form>
 
-       <div class="output">
+    <button id="show-friends-list">Show Friends</button>
 
-       </div>
+    <div class="output">
 
+    </div>
 
-       <script id="display-friends" type="text/html">
+      <script id="display-friends" type="text/html">
 
+        <ul class="friend-list">
+          <% m.friends.forEach(function (friend) { %>
+            <li class="friend-item">
+                <div class="friend-name"> <%- friend.name %> </div>
+                <div class="friend-gender"> <%- friend.gender %> </div>
+                <div class="friend-college"> <%- friend.college %> </div>
+            </li>
+          <% }) %>
+        </ul>
 
-
-       </script>
+      </script>
 
        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
        <script src="bower_components/lodash/lodash.min.js"></script>

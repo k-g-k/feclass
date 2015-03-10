@@ -1,2 +1,1 @@
-//app.showDefault
-//app.displayFriends
+app.displayFriends();

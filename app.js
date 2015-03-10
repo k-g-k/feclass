@@ -1,7 +1,9 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    app = express();
-    friends = [];
+    app = express(),
+    Nedb = require('nedb'),
+    db = new Nedb();
+
 
 //Allow JSON posts/puts
 app.use(bodyParser.json());
@@ -13,12 +15,29 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.get('/api/friends', function (req, res) {
   // res.send('Hello, world');
-  res.json(friends);
+  // res.json(friends);
+  db.find({}, function (err, friends) {
+    res.json(friends);
+  });
 });
 
 app.post('/api/friends', function (req, res) {
-  friends.push(req.body);
-  res.json(req.body);
+  // friends.push(req.body);
+  // res.json(req.body);
+  var friend = {
+   name: req.body.name,
+   gender: req.body.gender,
+   college: req.body.college
+  };
+
+  db.insert(friend, function (err, friendRecord) {
+    if (err) {
+       console.log(err);
+       res.status(400).json({ message: 'Ruh roh!' });
+    } else {
+      res.json(friendRecord);
+    }
+  });
 });
 
 

@@ -1,0 +1,12 @@
+.friend-form {
+  position: relative;
+  float: left; }
+
+.output {
+  display: inline-block; }
+
+.friend-list {
+  display: none; }
+
+.show-list {
+  display: block; }

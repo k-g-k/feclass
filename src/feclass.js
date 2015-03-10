@@ -1,18 +1,20 @@
 $(function(){
 
-  function redrawFriends() {
-     $.getJSON('/api/friends').done(function(data) {
-       $('.output').text(JSON.stringify(data));
-     });
-   }
-
-   redrawFriends();
+  // function redrawFriends() {
+  //   var friendsHtml = $('#display-friends').html();
+  //   var template = _.template(friendsHtml, {variable: 'm'});
+  //
+  //    $.getJSON('/api/friends').done(function(data) {
+  //      $('.output').html(template({friends:data}));
+  //    });
+  //  }
 
 
    $('.friend-form').submit(function() {
      var newFriend = {
        name: $('input[name=name]').val(),
-       gender: $('input[name=gender]:checked').val()
+       gender: $('input[name=gender]:checked').val(),
+       college: $('input[name=college]').val()
      };
 
      $.ajax({
@@ -21,10 +23,10 @@ $(function(){
      data: JSON.stringify(newFriend),
      contentType : 'application/json',
      dataType: 'json'
-      }).done(redrawFriends);
+   }).done(app.displayFriends);
 
      return false;
-     
+
    })
 
   });
