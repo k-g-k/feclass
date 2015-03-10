@@ -1,3 +1,4 @@
+var app ={};
 $(function(){
 
   function redrawFriends() {
@@ -28,3 +29,5 @@ $(function(){
    })
 
   });
+//app.showDefault
+//app.displayFriends

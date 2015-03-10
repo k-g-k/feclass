@@ -1,19 +1,15 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     app = express();
-    friends = [{
-      name: 'Matt',
-      gender: 'm'
-      }, {
-      name: 'Sally',
-      gender: 'f'
-    }];
+    friends = [];
 
 //Allow JSON posts/puts
 app.use(bodyParser.json());
 
 // Specify src as the place where public files are found
 app.use(express.static(__dirname + '/src'));
+app.use('/dist', express.static(__dirname + '/dist'));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.get('/api/friends', function (req, res) {
   // res.send('Hello, world');
